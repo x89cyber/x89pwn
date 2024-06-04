@@ -45,18 +45,18 @@ Return a bytestring of all characters excluding those in the bad_chars list.
 #### egghunter_x86_seh(egg=b"w00t")
 Return an x86 egghunter shellcode that implements it's own exception handler.
   
-  Attributes:
-  egg: the 4 byte string to search for twice.  Default is "w00t" and search for "w00tw00t".
+    Attributes:
+    egg: the 4 byte string to search for twice.  Default is "w00t" and search for "w00tw00t".
   
 #### egghunter_x86_syscall(syscall, egg=b"w00t")
 Return the x86 NtAccessCheckAndAuditAlarm system call egghunter shellcode based on original Matt Miller exploit.  
   
-  Note: The system call number is pased to the syscall variable. This varies by version of windows after windows 7. Lookup 
+    Note: The system call number is pased to the syscall variable. This varies by version of windows after windows 7. Lookup 
         the syscall number in WinDbg with this call:  u ntdll!NtAccessCheckAndAuditAlarm, and look for the value moved to eax.
 
-  Attributes:
-  syscall: Windows x86 system call number for NtAccessCheckAndAuditAlarm.  Pass this is a hex value, ex. 0x1c8.
-  egg: the 4 byte egg to search for twice.  Default is "w00t" and search is for "w00tw00t".
+    Attributes:
+    syscall: Windows x86 system call number for NtAccessCheckAndAuditAlarm.  Pass this is a hex value, ex. 0x1c8.
+    egg: the 4 byte egg to search for twice.  Default is "w00t" and search is for "w00tw00t".
 
 #### rop_stub_VirtualAlloc()
 Return the VirtualAlloc API stub for DEP bypass using ROP.
@@ -67,18 +67,18 @@ Return the VirtualAllocEx API stub for DEP bypass using ROP.
 #### rop_stub_VirtualProtect(vp_addr=0x60606060, lpAddress=0x61616161, dwSize=0xffffffff, flNewProtect=0xffffffc0, lpflOldProtect=0x65656565)
 Return the VirtualProtect API stub for DEP bypass using ROP.  
 
-  Attributes:
-  vp_addr: VirtualProtect address
-  lbAddress: ShellCode address
-  dwSize: default to -0x01
-  flNewProtect: default to -0x40
-  lpflOldProtect: DWORD pointer to writable memory
+    Attributes:
+    vp_addr: VirtualProtect address
+    lpAddress: ShellCode address
+    dwSize: default to -0x01
+    flNewProtect: default to -0x40
+    lpflOldProtect: DWORD pointer to writable memory
 
 #### rop_stub_WriteProcessMemory(wpm_addr, code_cave_addr, dword_addr)
 Return the WriteProcessMemory API stub for DEP bypass using ROP.
 
-  Attributes:
-  wpm_addr: address of WriteProcessMemory function
-  code_cave_addr: address of the code cave to write shellcode to
-  dword_addr: address of a location the number of bytes written can be written to
+    Attributes:
+    wpm_addr: address of WriteProcessMemory function
+    code_cave_addr: address of the code cave to write shellcode to
+    dword_addr: address of a location the number of bytes written can be written to
   
