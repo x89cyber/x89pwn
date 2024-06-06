@@ -58,7 +58,7 @@ Return the x86 NtAccessCheckAndAuditAlarm system call egghunter shellcode based 
     syscall: Windows x86 system call number for NtAccessCheckAndAuditAlarm.  Pass this is a hex value, ex. 0x1c8.
     egg: the 4 byte egg to search for twice.  Default is "w00t" and search is for "w00tw00t".
 
-#### rop_stub_VirtualAlloc()
+#### rop_stub_VirtualAlloc(va_addr=0x60606060,rtrn_addr=0x61616161,lpAddress=0x62626262,dwSize=0x63636363,flAllocationType=0x64646464,flProtect=0x65656565)
 Return the VirtualAlloc API stub for DEP bypass using ROP.
 
 #### rop_stub_VirtualAllocEx()
