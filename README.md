@@ -10,6 +10,9 @@ Emulate x86 register addtion
 #### regsub(a,b)
 Emulate x86 register subtraction
 
+#### read_data(r)
+Read all data from pwn.remote connection - keep connection open.
+
 #### is_port_connected(port)
 Determine if the port is in "ESTABLISHED" state using netstat.
 
