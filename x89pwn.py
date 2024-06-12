@@ -10,6 +10,24 @@ import pwn
 #
 ######################################################################################################
 
+def regmul(a, b):
+    '''
+    x86 register multiplication emulator.
+    '''
+    return (a*b) & 0xFFFFFFFF
+
+def regadd(a, b):
+    '''
+    x86 register addition emulator.
+    '''
+    return (a+b) & 0xFFFFFFFF
+
+def regsub(a, b):
+    '''
+    x86 register subtraction emulator.
+    '''
+    return (a-b) & 0xFFFFFFFF
+	
 def is_port_connected(port):
     '''
     Determine if the port is in "ESTABLISHED" state using netstat.
