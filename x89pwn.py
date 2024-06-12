@@ -27,6 +27,18 @@ def regsub(a, b):
     x86 register subtraction emulator.
     '''
     return (a-b) & 0xFFFFFFFF
+
+def read_data(r):
+    '''
+    Read all data from pwn.remote connection - keep connection open.
+    '''
+    data = b''
+    while True:
+        chunk = r.recv(1024, timeout=1)
+        if not chunk:
+            break
+        data += chunk
+    return data
 	
 def is_port_connected(port):
     '''
