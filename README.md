@@ -1,6 +1,15 @@
 # x89pwn
 Collection of pwning helper functions
 ## Functions
+#### regmul(a,b)
+Emulate x86 register multiplication
+
+#### regadd(a,b)
+Emulate x86 register addtion
+
+#### regsub(a,b)
+Emulate x86 register subtraction
+
 #### is_port_connected(port)
 Determine if the port is in "ESTABLISHED" state using netstat.
 
